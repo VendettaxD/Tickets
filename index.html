@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/image-removebg-preview (1).png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
+
+    <title>Tickets | NOC </title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+            font-size: 15px;
+            text-align: justify;
+            color: red;
+        }
+
+        /* Container principal da barra de navegação */
+        .navbar {
+            font-family: Arial, sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 32%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 38%;
+            background-color: #ffffff;
+            padding: 10px 0;
+            border-radius: 30px;
+            box-shadow: 0px 0px 15px 5px rgba(95, 231, 255, 0.2);
+        }
+
+        /* Estilos para os ícones da barra de navegação */
+        .nav-item {
+            text-align: center;
+            color: #888;
+        }
+
+        .nav-item i {
+            font-style: normal;
+            font-size: 18px;
+            font-family: "Poppins", serif;
+            transition: color 0.3s;
+        }
+
+        /* Botão principal centralizado */
+        .nav-item.main-button {
+            position: relative;
+            top: -20px;
+            left: 1px;
+            background-color: #007bff;
+            color: #ffffff;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .nav-item.main-button i {
+            font-size: 58px;
+            text-align: center;
+            margin-right: 0px;
+        }
+
+        /* Efeito ao passar o mouse */
+        .nav-item:hover i {
+            color: #0077ff;
+        }
+
+        .tab-container {
+            font-family: "Poppins", serif;
+            display: flex;
+            border-bottom: 2px solid #ccc;
+            cursor: pointer;
+        }
+
+        .tab {
+            font-family: "Poppins", serif;
+            padding: 10px 20px;
+            margin: 0;
+            background-color: #f0f0f0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .tab.active {
+            font-family: "Poppins", serif;
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+
+        .tab-content {
+            font-family: "Poppins", serif;
+            display: none;
+            padding: 0px;
+            height: 100%;
+            border: 1px solid #cccccc00;
+            border-top: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .chat-container {
+            width: 100%;
+            height: 600px;
+            background-color: #f0f7ff;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cabeçalho do Chat */
+        .chat-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .chat-header h2 {
+            font-size: 18px;
+        }
+
+        /* Área de Mensagens */
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #ffffff;
+        }
+
+        /* Estilos para mensagens */
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sender-name {
+            font-size: 12px;
+            color: #007bff;
+            margin-bottom: 5px;
+            left: 100px;
+            font-weight: 600;
+        }
+
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background-color: #007bff;
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .message.bot .message-content {
+            background-color: #e6f0ff;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Campo de entrada de texto */
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background-color: #e6f0ff;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .attach-button {
+            background-color: transparent;
+            /* Para deixar o botão de anexo transparente */
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            /* Tamanho do ícone */
+            margin-right: 10px;
+            /* Espaçamento entre os botões */
+        }
+
+        .chat-input button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+
+        
+    </style>
+    </head>
+
+    <body>
+        <div class="box-main"></div>
+        <div class="tab-container">
+            <div class="tab active" onclick="openTab('tab1')">Ticket {ticket.number}] <span
+                    class="material-symbols-outlined">close</span></div>
+            <div class="tab" onclick="openTab('tab2')">Ticket {ticket.number} <span
+                    class="material-symbols-outlined">close</span></div>
+            <div class="tab" onclick="openTab('tab3')">Ticket {ticket.number} <span
+                    class="material-symbols-outlined">close</span></div>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <!-- <h2>Conteúdo da Aba 1</h2> -->
+            <div class="chat-container">
+                <!-- Cabeçalho do Chat -->
+                <div class="chat-header">
+                    <img src="https://via.placeholder.com/40" alt="Foto do Colaborador">
+                    <h2>cu do marcelo</h2>
+                </div>
+
+                <!-- Área de Mensagens -->
+                <div class="chat-messages">
+                    <div class="message bot">
+                        <div class="sender-name">João cabecinha de bater bife</div>
+                        <div class="message-content">
+                            Olá! Como posso ajudar você hoje?
+                        </div>
+                    </div>
+                    <div class="message user">
+                        <div class="sender-name">Alex Silva</div>
+                        <div class="message-content">
+                            Gostaria de saber mais sobre os nossos produtos.
+                        </div>
+                    </div>
+                    <div class="message bot">
+                        <div class="sender-name">João cabecinha de bater bife</div>
+                        <div class="message-content">
+                            Claro! Temos várias opções disponíveis. Vou te mostrar algumas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo de entrada de texto -->
+                <div class="chat-input">
+                    <input type="text" placeholder="Digite sua mensagem...">
+                    <button class="attach-button"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="25px"
+                            viewBox="0 0 20 20">
+                            <g fill="currentColor">
+                                <path
+                                    d="M6.5 2h6.685a1.5 1.5 0 0 1 1.106.486l4.314 4.702A1.5 1.5 0 0 1 19 8.202V18.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18.5v-15A1.5 1.5 0 0 1 6.5 2"
+                                    opacity="0.2" />
+                                <path
+                                    d="M6.5 12a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.185 1H4.5A1.5 1.5 0 0 0 3 2.5v15A1.5 1.5 0 0 0 4.5 19h11a1.5 1.5 0 0 0 1.5-1.5V7.202a1.5 1.5 0 0 0-.395-1.014l-4.314-4.702A1.5 1.5 0 0 0 11.185 1M4 2.5a.5.5 0 0 1 .5-.5h6.685a.5.5 0 0 1 .369.162l4.314 4.702a.5.5 0 0 1 .132.338V17.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5z"
+                                    clip-rule="evenodd" />
+                                <path d="M11 7h5.5a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 1 0z" />
+                            </g>
+                        </svg></button>
+                    <button>Enviar</button>
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-content">
+            
+        </div>
+        <div id="tab3" class="tab-content">
+            <div class="chat-container">
+                <!-- Cabeçalho do Chat -->
+                <div class="chat-header">
+                    <img src="https://via.placeholder.com/40" alt="Foto do Colaborador">
+                    <h2>cu do marcelo</h2>
+                </div>
+
+                <!-- Área de Mensagens -->
+                <div class="chat-messages">
+                    <div class="message bot">
+                        <div class="sender-name">{user.adm.var}</div>
+                        <div class="message-content">
+                            {message.var}
+                        </div>
+                    </div>
+                    <div class="message user">
+                        <div class="sender-name">{colaborador.var}</div>
+                        <div class="message-content">
+                            {message.var}
+                        </div>
+                    </div>
+                    <div class="message bot">
+                        <div class="sender-name">{user.adm.var}</div>
+                        <div class="message-content">
+                            {message.var}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo de entrada de texto -->
+                <div class="chat-input">
+                    <input type="text" placeholder="Digite sua mensagem...">
+                    <button class="attach-button"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="25px"
+                            viewBox="0 0 20 20">
+                            <g fill="currentColor">
+                                <path
+                                    d="M6.5 2h6.685a1.5 1.5 0 0 1 1.106.486l4.314 4.702A1.5 1.5 0 0 1 19 8.202V18.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 18.5v-15A1.5 1.5 0 0 1 6.5 2"
+                                    opacity="0.2" />
+                                <path
+                                    d="M6.5 12a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zm0 3a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1z" />
+                                <path fill-rule="evenodd"
+                                    d="M11.185 1H4.5A1.5 1.5 0 0 0 3 2.5v15A1.5 1.5 0 0 0 4.5 19h11a1.5 1.5 0 0 0 1.5-1.5V7.202a1.5 1.5 0 0 0-.395-1.014l-4.314-4.702A1.5 1.5 0 0 0 11.185 1M4 2.5a.5.5 0 0 1 .5-.5h6.685a.5.5 0 0 1 .369.162l4.314 4.702a.5.5 0 0 1 .132.338V17.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5z"
+                                    clip-rule="evenodd" />
+                                <path d="M11 7h5.5a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5v-6a.5.5 0 0 1 1 0z" />
+                            </g>
+                        </svg></button>
+                    <button>Enviar</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="navbar">
+            <div class="nav-item"><i class="fas fa-home">Tickets<br> em andamento</i></div>
+            <div class="nav-item"><i class="fas fa-search">Tickets<br> encerrados</i></div>
+            <div class="nav-item main-button"><i class="fas fa-plus">+</i></div>
+            <div class="nav-item"><i class="fas fa-bell">Problemas<br>comuns</i></div>
+            <div class="nav-item"><i class="fas fa-user">Relatórios de<br>Tickets</i></div>
+        </div>
+
+        <script>
+            // Função para alternar entre as abas
+            function openTab(tabId) {
+                // Remove a classe "active" de todas as abas e conteúdos
+                let tabs = document.querySelectorAll(".tab");
+                let contents = document.querySelectorAll(".tab-content");
+                tabs.forEach(tab => tab.classList.remove("active"));
+                contents.forEach(content => content.classList.remove("active"));
+
+                // Adiciona a classe "active" para a aba e conteúdo selecionado
+                document.querySelector(`[onclick="openTab('${tabId}')"]`).classList.add("active");
+                document.getElementById(tabId).classList.add("active");
+            }
+        </script>
+
+    </body>
+
+</html>
