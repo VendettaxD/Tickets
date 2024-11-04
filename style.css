@@ -12,66 +12,173 @@
 /* Media Query para telas menores */
 @media (max-width: 768px) {
     .navbar {
-        width: 90%; /* Ajuste a largura da navbar */
-        left: 5%; /* Centraliza a navbar */
+        width: 90%;
+        /* Ajuste a largura da navbar */
+        left: 5%;
+        /* Centraliza a navbar */
     }
 
     .chat-container {
-        height: 500px; /* Ajusta a altura do chat */
+        height: 500px;
+        /* Ajusta a altura do chat */
     }
 
     .tab {
-        padding: 10px; /* Reduz o padding das tabs */
-        font-size: 14px; /* Ajusta o tamanho da fonte */
+        padding: 10px;
+        /* Reduz o padding das tabs */
+        font-size: 14px;
+        /* Ajusta o tamanho da fonte */
     }
 
     .chat-input input {
-        padding: 8px; /* Ajusta o padding do input */
-        font-size: 12px; /* Reduz o tamanho da fonte do input */
+        padding: 8px;
+        /* Ajusta o padding do input */
+        font-size: 12px;
+        /* Reduz o tamanho da fonte do input */
     }
 
     .chat-input button {
-        padding: 8px 15px; /* Ajusta o padding do botão */
-        font-size: 14px; /* Reduz o tamanho da fonte do botão */
+        padding: 8px 15px;
+        /* Ajusta o padding do botão */
+        font-size: 14px;
+        /* Reduz o tamanho da fonte do botão */
     }
 
     .message-content {
-        font-size: 12px; /* Reduz o tamanho da fonte das mensagens */
+        font-size: 12px;
+        /* Reduz o tamanho da fonte das mensagens */
     }
 
     .sender-name {
-        font-size: 10px; /* Reduz o tamanho da fonte do nome do remetente */
+        font-size: 10px;
+        /* Reduz o tamanho da fonte do nome do remetente */
     }
 }
 
 /* Media Query para telas muito pequenas, como smartphones */
 @media (max-width: 480px) {
     .navbar {
-        flex-direction: column; /* Muda a navbar para coluna */
+        flex-direction: column;
+        /* Muda a navbar para coluna */
         width: 100%;
         left: 0;
-        position: static; /* Ajusta a posição da navbar */
+        position: static;
+        /* Ajusta a posição da navbar */
     }
 
     .nav-item {
-        margin: 5px 0; /* Adiciona espaçamento vertical entre os itens */
+        margin: 5px 0;
+        /* Adiciona espaçamento vertical entre os itens */
     }
 
     .nav-item.main-button {
-        margin: 10px 0; /* Margem para o botão principal */
+        margin: 10px 0;
+        /* Margem para o botão principal */
     }
 
     .chat-input {
-        flex-direction: column; /* Muda a direção do chat input para coluna */
-        align-items: stretch; /* Estica os itens */
+        flex-direction: column;
+        /* Muda a direção do chat input para coluna */
+        align-items: stretch;
+        /* Estica os itens */
     }
 
     .chat-input input {
-        margin-right: 0; /* Remove margem direita */
-        margin-bottom: 10px; /* Adiciona margem abaixo do input */
+        margin-right: 0;
+        /* Remove margem direita */
+        margin-bottom: 10px;
+        /* Adiciona margem abaixo do input */
     }
 
     .chat-input button {
-        width: 100%; /* Faz os botões ocuparem a largura total */
+        width: 100%;
+        /* Faz os botões ocuparem a largura total */
+    }
+}
+
+
+ body {
+    padding: 0;
+    margin: 0;
+ }
+
+
+nav {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px;
+}
+
+nav button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+nav button:hover {
+    background-color: #777;
+}
+
+.container-options {
+    width: 50%;
+    margin: 20px;
+    height: 84%;
+    display: none;
+    border-radius: 3%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container-options h3 {
+    font-family: Arial, sans-serif;
+    color: rgb(43, 170, 255);
+    font-size: 25px;
+    top: 1%;
+    position: absolute;
+}
+
+.container-options-box {
+    width: 70%;
+    height: 10%;
+    background-color: #2ecc71;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 30%;
+}
+
+#containerOption1 {
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#containerOption2 {
+    background-color: #e74c3c;
+}
+
+#containerOption3 {
+    background-color: #2ecc71;
+}
+
+#containerOption4 {
+    background-color: #9b59b6;
+}
+
+@media (max-width: 768px) {
+    .container-options {
+        width: 100%;
     }
 }
