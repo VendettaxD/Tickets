@@ -128,7 +128,6 @@ nav button:hover {
     width: 50%;
     margin: 20px;
     height: 84%;
-    display: none;
     border-radius: 3%;
     justify-content: center;
     align-items: center;
@@ -146,13 +145,90 @@ nav button:hover {
     position: absolute;
 }
 
+
+.circle-status {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255, 166, 2);
+    border-radius: 60%;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+}
+
+#name-analista {
+    color: rgb(51, 190, 62);
+    left: 64.5%;
+    top: 17%;
+    font-size: 20px;
+    position: absolute;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+ #admin-name {
+    color: white;
+    font-size: 14px;
+    left: 65%;
+    top: -11%;
+    position: absolute;
+    font-family:Arial, Helvetica, sans-serif;
+ }
+
+.circle-foto {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255, 2, 192);
+    border-radius: 60%;
+    top: 35%;
+    left: 2%;
+    position: relative;
+}
+
+.container-options-box i {
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: normal;
+    position: relative;
+    left: 9%;
+    color: white;
+}
+
 .container-options-box {
+    display: flex;
+    flex-direction: column;
+    top: -5%;
+    margin: 5px 5px;
     width: 70%;
     height: 10%;
-    background-color: #2ecc71;
+    background-color: #221f1f;
     border-radius: 10px;
-    position: absolute;
+    position: relative;
     bottom: 30%;
+    opacity: 70%;
+    box-shadow: 0px 2px 5px 2px rgb(255, 212, 241);
+}
+
+.container-options-box h3 {
+    color: white;
+    font-size: 14px;
+    left: 50%;
+    top: -11%;
+    position: absolute;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container-options-box h4 {
+    color: white;
+    font-size: 14px;
+    left: 3%;
+    top: -15%;
+    position: absolute;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.container-options-box:hover {
+    opacity: 100%;
+    background-color: #7b8691;
 }
 
 #containerOption1 {

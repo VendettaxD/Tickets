@@ -95,7 +95,7 @@
 
         /* Efeito ao passar o mouse */
         .nav-item:hover i {
-            color: #1ca364e1;
+            color: #ff5335;
         }
 
         .tab-container {
@@ -150,7 +150,7 @@
 
         /* Cabeçalho do Chat */
         .chat-header {
-            background-color: #007bff;
+            background-color: #ff2f00;
             color: #fff;
             padding: 15px;
             display: flex;
@@ -187,7 +187,7 @@
 
         .sender-name {
             font-size: 12px;
-            color: #007bff;
+            color: #ff0000;
             margin-bottom: 5px;
             left: 100px;
             font-weight: 600;
@@ -376,7 +376,60 @@
 
     <div id="containerOption1" class="container-options">
         <h3>Tickets em andamento</h3>
-        <div class="container-options-box"></div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>Luciano Gomes | Financeiro </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>João Bastos | Suporte </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>Bianca  | Suporte </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>Marcelo Fraga | Gestão </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>Felipe Roxo | SAC </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
+        <div class="container-options-box">
+            <div class="circle-foto"></div>
+            <i>Emanuel Claudio | Agendamentos </i>
+           <h4>Mal funcionamento dos perifericos</h4>
+           <h3>Status</h3>
+           <h3 id="admin-name">Analista</h3>
+           <h3 id="name-analista">Arnold</h3>
+           <div class="circle-status"></div>
+        </div>
 </div>
         
     <div id="containerOption2" class="container-options">Conteúdo do Container 2</div>
@@ -418,6 +471,82 @@
 
     </script>
 
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 
 </html>
