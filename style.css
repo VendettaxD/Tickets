@@ -193,7 +193,7 @@ nav button:hover {
 }
 
 .container-options-box {
-    display: flex;
+    display: none;
     flex-direction: column;
     top: -5%;
     margin: 5px 5px;
