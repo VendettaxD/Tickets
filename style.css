@@ -193,7 +193,7 @@ nav button:hover {
 }
 
 .container-options-box {
-    display: none;
+    display: flex;
     flex-direction: column;
     top: -5%;
     margin: 5px 5px;
@@ -232,6 +232,7 @@ nav button:hover {
 }
 
 #containerOption1 {
+    display: none;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -242,14 +243,17 @@ nav button:hover {
 }
 
 #containerOption2 {
+    display: none;
     background-color: #e74c3c;
 }
 
 #containerOption3 {
+    display: none;
     background-color: #2ecc71;
 }
 
 #containerOption4 {
+    display: none;
     background-color: #9b59b6;
 }
 
@@ -257,4 +261,10 @@ nav button:hover {
     .container-options {
         width: 100%;
     }
+}
+
+
+/* to hide */
+.tohide {
+    display: none;
 }
