@@ -1,0 +1,245 @@
+/* CSS para o layout do sistema de tickets */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+/* Container do Ticket */
+.ticket-container {
+    width: 40%;
+    height: 750px;
+    /* max-width: 600px; */ /* Você pode ajustar esse valor para ter um tamanho máximo */
+    margin: 30px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+    top: 0;
+    right: 0; /* Alinha à extrema direita */
+}
+/* Abas dos tickets */
+.tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #ff5757;
+    gap: 4px;
+    padding: 4px;
+}
+
+/* Botões de navegação do ticket */
+.tab {
+    padding: 5px 8px;
+    cursor: pointer;
+    position: relative;
+    background-color: #ff5757;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.tab.active {
+    background-color: #ff3d3d;
+}
+
+.tab .close-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+}
+
+/* Conteúdo do ticket */
+.content {
+    background-color: white;
+    padding: 15px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Seção Informativa do Ticket */
+.ticket-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    background-color: #ffe5e5;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.ticket-details p {
+    margin: 2px 0;
+    font-size: 12px;
+    color: #333;
+}
+
+/* Área de Mensagens */
+.messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    position: relative;
+    margin-bottom: -340px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+
+/* Estilos para as mensagens */
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+/* Nome do remetente */
+.sender-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Texto da mensagem */
+.message-text {
+    font-size: 1rem;
+}
+
+/* Estilos específicos para o usuário */
+.message.user {
+    background-color: #fcabab; /* Cor de fundo para a mensagem do usuário */
+    align-self: flex-start;
+}
+
+/* Estilos específicos para o administrador */
+.message.admin {
+    background-color: #f8d7da; /* Cor de fundo para a mensagem do administrador */
+    align-self: flex-end;
+}
+
+
+/* Área de Entrada de Mensagem */
+.input-area {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    top: 110%;
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #ff3d3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+button:hover {
+    background-color: #ff5757;
+}
+
+/* Navbar inferior centralizada e compacta */
+.navbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff5757;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+}
+
+/* Botões dentro da navbar */
+.navbar button {
+    background-color: #ff3d3d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.new-ticket-btn {
+    background-color: #ffffff;
+    color: #ff3d3d;
+    font-weight: bold;
+    border: 1px solid #ff3d3d;
+    padding: 8px 16px;
+}
+
+.navbar button:hover {
+    background-color: #ff5757;
+}
+
+.new-ticket-btn:hover {
+    background-color: #ffcccc;
+    color: #ff3d3d;
+    border-color: #ff3d3d;
+}
+
+.navbar button:hover {
+    background-color: #ff5757;
+}
+
+/* Container de Tickets */
+.left-container {
+    width: 50%;
+    padding: 20px;
+    background-color: #ffe5e5;
+    box-sizing: border-box;
+}
+
+/* Seções da Left Container */
+.section {
+    display: none;
+    background-color: #ffcccc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ff5757;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Container de Tickets - Adicionado um espaçamento para separar os tickets */
+.ticket-container {
+    margin-bottom: 10px;
+}

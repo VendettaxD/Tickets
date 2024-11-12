@@ -1,22 +1,152 @@
-        // Função para alternar entre as abas
-        function openTab(tabId) {
-            // Remove a classe "active" de todas as abas e conteúdos
-            let tabs = document.querySelectorAll(".tab");
-            let contents = document.querySelectorAll(".tab-content");
-            tabs.forEach(tab => tab.classList.remove("active"));
-            contents.forEach(content => content.classList.remove("active"));
+// Simulação de dados de cinco tickets
+let tickets = [
+    { id: 1, title: "Ticket #12342024", messages: [] },
+    { id: 2, title: "Ticket #23452024", messages: [] },
+    { id: 3, title: "Ticket #34562024", messages: [] }
+];
 
-            // Adiciona a classe "active" para a aba e conteúdo selecionado
-            document.querySelector(`[onclick="openTab('${tabId}')"]`).classList.add("active");
-            document.getElementById(tabId).classList.add("active");
-        }
+let activeTicketId = null;
 
-        function showContainer(containerId) {
-            const containers = document.querySelectorAll('.container-options');
-            containers.forEach(container => {
-                container.style.display = 'none';
-            });
+const tabsContainer = document.querySelector('.tabs');
+const messagesContainer = document.getElementById('messages');
 
-            const selectedContainer = document.getElementById(containerId);
-            selectedContainer.style.display = 'flex';
-        }
+// Função para gerar o protocolo do ticket (sequencial + data no formato DDMMYYYY)
+function generateTicketProtocol() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0'); // Formata o dia com 2 dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Formata o mês com 2 dígitos (0-based)
+    const year = date.getFullYear(); // Obtém o ano completo (ex: 2024)
+
+    const protocolNumber = tickets.length + 1; // Número sequencial baseado na quantidade de tickets
+
+    return `${protocolNumber}${day}${month}${year}`; // Ex: 12312024 (1 + 31/12/2024)
+}
+
+
+
+// Criar um novo ticket
+function createNewTicket() {
+    const newTicketProtocol = generateTicketProtocol(); // Gera o protocolo com número sequencial e data
+    const newTicketId = tickets.length + 1; // Criação de um novo ticket com ID incremental
+    const newTicket = { id: newTicketId, title: `Ticket #${newTicketProtocol}`, messages: [] };
+    tickets.push(newTicket);
+    renderTabs(); // Re-renderizar as abas dos tickets
+    openTicket(newTicketId); // Abrir o novo ticket criado
+}
+
+
+// Renderizar as abas dos tickets
+function renderTabs() {
+    tabsContainer.innerHTML = '';
+    tickets.forEach(ticket => {
+        const tab = document.createElement('div');
+        tab.className = 'tab';
+        tab.textContent = ticket.title;
+
+        // Botão de fechar
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close-btn';
+        closeButton.textContent = 'X';
+        closeButton.onclick = (e) => {
+            e.stopPropagation();
+            closeTab(ticket.id);
+        };
+
+        tab.appendChild(closeButton);
+        tab.onclick = () => openTicket(ticket.id);
+
+        tabsContainer.appendChild(tab);
+    });
+}
+
+// Abrir um ticket e exibir as mensagens
+function openTicket(id) {
+    activeTicketId = id;
+    const ticket = tickets.find(ticket => ticket.id === id);
+
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+
+    renderMessages(ticket.messages);
+}
+
+// Renderizar as mensagens no chat
+function renderMessages(messages) {
+    messagesContainer.innerHTML = ''; // Limpa a área de mensagens
+    messages.forEach(message => {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${message.sender}`; // Adiciona a classe de quem enviou a mensagem
+
+        // Cria a estrutura de exibição da mensagem com o nome do remetente
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'sender-name';
+        nameDiv.textContent = message.name; // Exibe o nome do remetente
+
+        const textDiv = document.createElement('div');
+        textDiv.className = 'message-text';
+        textDiv.textContent = message.text; // Exibe o conteúdo da mensagem
+
+        msgDiv.appendChild(nameDiv); // Adiciona o nome do remetente
+        msgDiv.appendChild(textDiv); // Adiciona a mensagem de texto
+
+        messagesContainer.appendChild(msgDiv); // Adiciona a mensagem na área de mensagens
+    });
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Garante que a área de mensagens desça até o final
+}
+// Enviar mensagem do usuário e simular resposta do administrador
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const userMessage = input.value.trim();
+    if (!userMessage || activeTicketId === null) return;
+
+    const ticket = tickets.find(ticket => ticket.id === activeTicketId);
+    
+    // Adiciona a mensagem do usuário
+    ticket.messages.push({ 
+        sender: 'user', 
+        name: 'João da Silva',  // Nome do usuário
+        text: userMessage 
+    });
+
+    renderMessages(ticket.messages); // Atualiza as mensagens
+    input.value = ''; // Limpa o campo de input
+
+    // Simular resposta do administrador após 1 segundo
+    setTimeout(() => {
+        const adminMessage = { 
+            sender: 'admin', 
+            name: 'Administrador',  // Nome do administrador
+            text: "Resposta automática do administrador." 
+        };
+        ticket.messages.push(adminMessage); // Adiciona a mensagem do administrador
+        renderMessages(ticket.messages); // Atualiza as mensagens
+    }, 1000);
+}
+
+// Fechar uma aba de ticket
+function closeTab(id) {
+    tickets = tickets.filter(ticket => ticket.id !== id);
+    if (id === activeTicketId) {
+        activeTicketId = tickets.length ? tickets[0].id : null;
+        renderTabs();
+        if (activeTicketId) openTicket(activeTicketId);
+    } else {
+        renderTabs();
+    }
+}
+
+// Inicializar o sistema de tickets
+renderTabs();
+if (tickets.length) openTicket(tickets[0].id);
+
+
+// JavaScript para alternar entre as seções da esquerda
+function showSection(sectionNumber) {
+    // Esconder todas as seções
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Exibir a seção selecionada
+    document.getElementById(`section${sectionNumber}`).style.display = 'block';
+}
