@@ -220,20 +220,20 @@ button:hover {
     background-color: #ff5757;
 }
 
-/* Container de Tickets */
+/* Container de Tickets
 .left-container {
     width: 50%;
     padding: 20px;
     background-color: #ffe5e5;
     box-sizing: border-box;
-}
+} */
 
 /* Container de Tickets - Adicionado um espaçamento para separar os tickets */
 .ticket-container {
     margin-bottom: 10px;
 }
 /* Seções da Left Container */
-.section { 
+.section {
     width: 50vw; /* 50% da largura da viewport */
     height: 80vh;
     display: flex;
@@ -245,7 +245,7 @@ button:hover {
     font-size: 14px;
     color: #333;
     margin-left: -5vw;
-
+    margin-top: 32px;
 }
 
 .section h2 {
@@ -269,6 +269,10 @@ button:hover {
 }
 
 .name-column h3 {
+    position: relative;
+    right: 320%;
+    padding-top: 12px;
+    margin-top: ;
     color: white;
     font-size: 14px;
     margin-bottom: 5px;
@@ -282,7 +286,7 @@ button:hover {
     align-items: center; /* Centraliza os itens verticalmente */
     margin: 10px;
     padding: 10px;
-    width: 70%;
+    max-width: 90%;
     background-color: #221f1f;
     border-radius: 10px;
     opacity: 70%;
@@ -335,7 +339,7 @@ button:hover {
 }
 
 .circle-options {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -346,11 +350,10 @@ button:hover {
 }
 
 .circle-status {
-    width: 40px;
+     width: 40px; /* caso voce que esta vendo o codigo tenha uma solução melhor, nos contate */
     height: 40px;
     background-color: rgb(255, 2, 192);
     border-radius: 50%;
-    align-self: center;
-    align-items: start;
+    margin-left: 420px;
 }
 
