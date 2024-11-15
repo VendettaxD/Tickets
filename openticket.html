@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Problemas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      margin: 0;
+    }
+    .form-container {
+      width: 60%;
+      max-width: 800px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-left: 5px solid #ff4d4d; /* Detalhe em vermelho */
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #333;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .toolbar button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #ff4d4d; /* Botões em vermelho */
+      color: #ffffff;
+      font-size: 14px;
+    }
+    .toolbar button:hover {
+      background-color: #e60000;
+    }
+    .description {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border: 1px solid #ff4d4d; /* Borda vermelha para o campo de descrição */
+      border-radius: 4px;
+      resize: none;
+      font-size: 14px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .cancel-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #ccc;
+      color: #333;
+      font-size: 14px;
+    }
+    .cancel-btn:hover {
+      background-color: #b3b3b3;
+    }
+    .submit-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #ff4d4d; /* Botão em vermelho */
+      color: #ffffff;
+      font-size: 14px;
+    }
+    .submit-btn:hover {
+      background-color: #e60000;
+    }
+
+    #image-logo {
+        position: absolute;
+        width: 120px;
+        margin-left: 30px;
+        bottom: 88%;
+    }
+  </style>
+</head>
+<body> 
+    <img id="image-logo" src="/images/Fenix-Internet-Logo.png" alt="">
+  <div class="form-container">
+    <h2>Registro de Problemas</h2>
+    <form id="problemForm">
+      <label for="problem">Descrição do Problema</label>
+      <input type="text" id="problem" placeholder="Descreva o problema enfrentado">
+
+      <label for="sector">Setor</label>
+      <select id="sector">
+        <option value="Comercial">Comercial</option>
+        <option value="Suporte">Suporte</option>
+        <option value="Financeiro">Financeiro</option>
+      </select>
+
+      <label for="analyst">Analista</label>
+      <select id="analyst">
+        <option value="Hassan">Hassan</option>
+        <option value="Arnold">Arnold</option>
+        <option value="João">João</option>
+      </select>
+
+      <label for="description">Descrição Detalhada</label>
+      <div class="toolbar">
+        <button type="button" onclick="formatText('bold')">Negrito</button>
+        <button type="button" onclick="formatText('italic')">Itálico</button>
+        <button type="button" onclick="formatText('increaseFont')">Aumentar Fonte</button>
+        <button type="button" onclick="formatText('decreaseFont')">Diminuir Fonte</button>
+      </div>
+      <textarea id="description" class="description" placeholder="Digite aqui a descrição detalhada do problema..."></textarea>
+    </form>
+
+    <!-- Botões de Cancelar e Criar Novo Ticket -->
+    <div class="buttons">
+      <button type="button" class="cancel-btn" onclick="cancelForm()">Cancelar</button>
+      <button type="button" class="submit-btn" onclick="submitForm()">Criar Novo Ticket</button>
+    </div>
+  </div>
+
+  <script>
+    function formatText(command) {
+      const descriptionField = document.getElementById("description");
+
+      // Aplica o comando de formatação ao texto selecionado
+      if (command === 'bold') {
+        descriptionField.style.fontWeight = 
+          descriptionField.style.fontWeight === 'bold' ? 'normal' : 'bold';
+      } else if (command === 'italic') {
+        descriptionField.style.fontStyle = 
+          descriptionField.style.fontStyle === 'italic' ? 'normal' : 'italic';
+      } else if (command === 'increaseFont') {
+        let currentSize = parseFloat(window.getComputedStyle(descriptionField).fontSize);
+        descriptionField.style.fontSize = (currentSize + 2) + "px";
+      } else if (command === 'decreaseFont') {
+        let currentSize = parseFloat(window.getComputedStyle(descriptionField).fontSize);
+        descriptionField.style.fontSize = (currentSize - 2) + "px";
+      }
+    }
+
+    function cancelForm() {
+      document.getElementById("problemForm").reset();
+      document.getElementById("description").style.fontWeight = "normal";
+      document.getElementById("description").style.fontStyle = "normal";
+      document.getElementById("description").style.fontSize = "14px";
+      alert("Formulário cancelado.");
+      window.location.href = "/index.html";
+    }
+
+    function submitForm() {
+  // Obtendo os valores dos campos
+  const problem = document.getElementById("problem").value.trim();
+  const sector = document.getElementById("sector").value;
+  const analyst = document.getElementById("analyst").value;
+  const description = document.getElementById("description").value.trim();
+
+  // Verificando se todos os campos obrigatórios estão preenchidos
+  if (!problem || !sector || !analyst || !description) {
+    alert("Por favor, preencha todos os campos obrigatórios antes de criar o ticket.");
+    return; // Interrompe a execução da função se algum campo estiver vazio
+  }
+
+  // Se todos os campos estão preenchidos, prossegue com a criação do ticket
+  alert("Ticket criado com sucesso!");
+  
+  // Limpar o formulário
+  document.getElementById("problemForm").reset();
+
+  // Redirecionar para outra página (substitua 'URL_DA_PAGINA' pelo link desejado)
+  window.location.href = "/index.html";
+}
+  </script>
+</body>
+</html>

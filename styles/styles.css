@@ -1,7 +1,7 @@
 /* CSS para o layout do sistema de tickets */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    background-color: #f4f4f9;
     color: #333;
     display: flex;
     justify-content: flex-end;
@@ -177,7 +177,8 @@ button:hover {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ff5757;
+    background-color: #ffffff;
+    border: 1px solid #ff4d4d;
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -188,9 +189,9 @@ button:hover {
 
 /* Botões dentro da navbar */
 .navbar button {
-    background-color: #ff3d3d;
-    color: white;
-    border: none;
+    background-color: #ffffff;
+    border: 1px solid #ff4d4d;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     padding: 8px 12px;
     margin: 0 5px;
@@ -207,7 +208,8 @@ button:hover {
 }
 
 .navbar button:hover {
-    background-color: #ff5757;
+    background-color: #9c0404;
+    color: white;
 }
 
 .new-ticket-btn:hover {
@@ -272,7 +274,6 @@ button:hover {
     position: relative;
     right: 320%;
     padding-top: 12px;
-    margin-top: ;
     color: white;
     font-size: 14px;
     margin-bottom: 5px;

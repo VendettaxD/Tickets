@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Tickets com Navbar</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Tickets NOC</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
   <div class="left-container">
-    <div class="section" id="section1">
+    <div style="display: none;" class="section" id="section1">
         <h2>Tickets em Aberto</h2>
         <ul id="ticketList"></ul>
     </div>
@@ -25,7 +25,7 @@
         <div class="content">
             <!-- Informações e chat do ticket -->
             <div class="ticket-info">
-                <img src="user-photo.jpg" alt="Foto do Usuário" class="user-photo">
+                <img src="https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Foto do Usuário" class="user-photo">
                 <div class="ticket-details">
                     <p><strong>Usuário:</strong> João da Silva</p>
                     <p><strong>Protocolo:</strong> #12345</p>
@@ -35,17 +35,25 @@
             <div class="messages" id="messages"></div>
             <div class="input-area">
                 <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+                
+                <!-- Campo de seleção de arquivo escondido -->
+                <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelection()">
+                
+                <!-- Botão para simular o clique no campo de arquivo -->
+                <button onclick="document.getElementById('fileInput').click()"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1v3.5A1.5 1.5 0 0 0 9.5 6H13v7.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 13.5v-11A1.5 1.5 0 0 1 4.5 1zm1 .25V4.5a.5.5 0 0 0 .5.5h3.25z"/></svg></button>
+                
+                <!-- Botão de envio da mensagem -->
                 <button onclick="sendMessage()">Enviar</button>
-            </div>
+              </div>
         </div>
     </div>
 
     <div class="navbar">
-        <button onclick="showSection(1)">Tickets <br> em<br> Abertos</button>
-        <button onclick="showSection(2)">Seção 2</button>
+        <button onclick="showSection(1)">Tickets<br>Abertos</button>
+        <button onclick="showSection(2)">Tickets<br>Encerrados</button>
         <button class="new-ticket-btn" onclick="createNewTicket()">Novo Ticket</button>
-        <button onclick="showSection(3)">Seção 3</button>
-        <button onclick="showSection(4)">Seção 4</button>
+        <button onclick="showSection(3)">Perguntas<br>frequentes</button>
+        <button onclick="showSection(4)">Relatórios</button>
     </div>
 
     <script src="script.js"></script>

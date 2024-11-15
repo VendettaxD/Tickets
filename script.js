@@ -80,6 +80,7 @@ function createNewTicket() {
     tickets.push(newTicket);
     renderTabs(); // Re-renderizar as abas dos tickets
     openTicket(newTicketId); // Abrir o novo ticket criado
+    window.location.href = "/openticket.html";
 }
 
 
@@ -199,4 +200,18 @@ function showSection(sectionNumber) {
     document.getElementById(`section${sectionNumber}`).style.display = 'block';
 }
 
+function handleFileSelection() {
+    const fileInput = document.getElementById("fileInput");
+    const selectedFile = fileInput.files[0]; // Obtém o primeiro arquivo selecionado
 
+    if (selectedFile) {
+      // Aqui você pode manipular o arquivo selecionado, exibir o nome ou enviar o arquivo
+      alert("Arquivo selecionado: " + selectedFile.name);
+    }
+  }
+
+  function sendMessage() {
+    const userInput = document.getElementById("userInput").value;
+    // Aqui você pode enviar a mensagem
+    alert("Mensagem enviada: " + userInput);
+  }

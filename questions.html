@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas sobre TI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 50%;
+      margin-bottom: 80px;
+      max-width: 600px;
+      margin-right: 300px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+    }
+    .question {
+      margin: 15px 0;
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .question-header:hover {
+      color: #d12525;
+    }
+    .answer {
+      margin-top: 10px;
+      display: none;
+      padding-left: 20px;
+      border-left: 2px solid #ff0000;
+      color: #333;
+    }
+    .icon {
+      font-size: 20px;
+      user-select: none;
+    }
+
+    #title-questions {
+        position: relative;
+        display: flex;
+        bottom: 37%;
+        left: 25%;
+        padding-bottom: 5px;
+    }
+
+    #image-logo {
+        position: absolute;
+        width: 100px;
+        margin-left: 30px;
+        bottom: 90%;
+    }
+
+    #links {
+        text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+    <img id="image-logo" src="/images/Fenix-Internet-Logo.png" alt="">
+    <h1 id="title-questions">Perguntas frequentes</h1>
+  <div class="container">
+    <div class="question">
+      <div class="question-header" onclick="toggleAnswer(this)">
+        <span>Não me lembro os meus logins, o que eu faço?</span>
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">Pode abrir um <a id="links" href="/index.html">ticket</a> diretamente com o NOC, solicitando a recuperação do seu login.</div>
+    </div>
+    <div class="question">
+      <div class="question-header" onclick="toggleAnswer(this)">
+        <span>Preciso da criação de logins para um novo colaborador.</span>
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">A criação de logins para novos colaboradores é feita pelo RH junto ao ingresso do colaborador a empresa. Caso tenha ocorrido algum problema, entre em contato com o RH.</div>
+    </div>
+    <div class="question">
+      <div class="question-header" onclick="toggleAnswer(this)">
+        <span>Estou com problemas em Softwares Terceiros.</span>
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">Caso você esteja com problemas nos sistemas Native Infinity, Voalle, 5HUB, é necessario abrir um Ticket conosco que será analisado seu caso e repassado a empresa competente caso seja necessario;</div>
+    </div>
+    <div class="question">
+      <div class="question-header" onclick="toggleAnswer(this)">
+        <span>Estou com problemas em meu computador.</span>
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">Casos de maquinas travando/lentidão serão analisadas caso a caso por um Analista do NOC. Casos onde algum hardware da sua maquina apresentou defeito, serão tratados de forma diferente. Faremos um diagnóstico e caso seja necessario, faremos a troca do componente.
+        (Casos onde a manutenção ultrapasse 8hrs, será disponibilizado um computador provisorio ao colaborador.)
+      </div>
+    </div>
+    <div class="question">
+      <div class="question-header" onclick="toggleAnswer(this)">
+        <span>Preciso de novos perifericos, a quem solicitar? </span>
+        <span class="icon">+</span>
+      </div>
+      <div class="answer">Em casos de periféricos aprensetando problemas, o colaborador deverá solicitar ao seu supervisor de equipe que solicite novos ao setor do Estoque, em caso de falta no estoque, ao setor de Compras.</div>
+    </div>
+    <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+      <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+      <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+      <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+      <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+      <div class="question">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <span>Mas cadê o cu do marcelo?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="answer">O cu do marcelo infelizmente não estará presente neste projeto, mas novas irresponsabilidades na hora de criar o codigo serão adicionadas.</div>
+      </div>
+
+  </div>
+
+  <script>
+    function toggleAnswer(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector(".icon");
+
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.textContent = "+";
+      } else {
+        answer.style.display = "block";
+        icon.textContent = "-";
+      }
+    }
+  </script>
+</body>
+</html>
