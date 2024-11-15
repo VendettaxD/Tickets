@@ -1,3 +1,51 @@
+// function to show the opens tickets
+
+function tickets2() {  
+    return [
+        {user: 'aaaaaaaaaaaa', department: 'Financeiro', title: 'Mal funcionamento dos periféricos', status: 'Analista', nameAnalista: 'Arnold'},
+        {user: 'Maria Silva', department: 'TI', title: 'Problema de rede', status: 'Analista', nameAnalista: 'Carlos'},
+    ];
+}
+
+function createTicketContent() {
+    const dynamicContent = document.getElementById('ticketList');
+    
+    // Verificação adicional para assegurar que o elemento foi encontrado
+    if (!dynamicContent) {
+        console.error('Elemento ticketList não encontrado na página.');
+        return;
+    }
+
+    const ticketList = tickets2();
+
+    ticketList.forEach(ticket => {
+        const container = document.createElement('div');
+        container.className = 'container-options';
+
+        container.innerHTML = `
+            <div class="container-options-box">
+                <div class="circle-foto"></div>
+                <div class="info-conlunm">
+                    <i>${ticket.user} | ${ticket.department}</i>
+                    <h4>${ticket.title}</h4>
+                </div>
+                <div class="circle-options">
+                    <h3>Status</h3>
+                    <div class="circle-status"></div>
+                </div>
+                <div class="name-column">
+                    <h3>${ticket.status}</h3>
+                    <h3>${ticket.nameAnalista}</h3>
+                </div>
+            </div>
+        `;
+
+        dynamicContent.appendChild(container);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', createTicketContent);
+
 // Simulação de dados de cinco tickets
 let tickets = [
     { id: 1, title: "Ticket #12342024", messages: [] },
@@ -150,3 +198,5 @@ function showSection(sectionNumber) {
     // Exibir a seção selecionada
     document.getElementById(`section${sectionNumber}`).style.display = 'block';
 }
+
+
