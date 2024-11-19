@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets NOC</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" media="screen and (max-width: 1600px)" href="/styles/responsive.css">
 </head>
 <body>
+
+    <div class="header">
+        <div class="user-profile">
+          <div class="user-image" onclick="toggleMenu()">
+            <img src="https://via.placeholder.com/40" alt="Imagem do colaborador">
+          </div>
+          <span class="user-name">Henrique Dornelles</span>
+          <div class="user-menu" id="userMenu">
+            <ul>
+              <li><a href="#">Configurações</a></li>
+              <li><a href="/loginpage.html">Logoff</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+
   <div class="left-container">
     <div style="display: none;" class="section" id="section1">
         <h2>Tickets em Aberto</h2>

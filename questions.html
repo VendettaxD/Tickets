@@ -3,73 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" media="screen and (max-width: 1600px)" href="/styles/responsive.css">
   <title>Perguntas sobre TI</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: flex-start; /* Garante que o conteúdo se alinhe ao topo */
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+  flex-direction: column; /* Layout vertical para telas pequenas */
+  overflow-y: hidden;
+}
+
+.container {
+  width: 100%;
+  margin-bottom: -10px; /* Aumenta a margem inferior para espaçamento */
+  max-width: 600px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column; /* Permite que o conteúdo cresça para baixo */
+  overflow-y: auto; /* Garante que o conteúdo se expanda dentro do contêiner */
+}
+
+.question {
+  margin: 15px 0;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question-header:hover {
+  color: #d12525;
+}
+
+.answer {
+  margin-top: 10px;
+  display: none;
+  padding-left: 20px;
+  border-left: 2px solid #ff0000;
+  color: #333;
+}
+
+.icon {
+  font-size: 20px;
+  user-select: none;
+}
+
+#title-questions {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  bottom: 5%;
+  left: 41.5%;
+}
+
+#image-logo {
+  position: relative;
+  width: 100px;
+  margin-left: 60px;
+  left: 43.5%;
+  bottom: 9%;
+}
+
+#links {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1580px) {
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    align-items: flex-start; /* Garante que o conteúdo se alinhe ao topo */
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+    flex-direction: column; /* Layout vertical para telas pequenas */
+    overflow-y: hidden;
+  }
+  
+  .container {
+    width: 100%;
+    margin-bottom: -10px; /* Aumenta a margem inferior para espaçamento */
+    max-width: 600px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column; /* Permite que o conteúdo cresça para baixo */
+    overflow-y: auto; /* Garante que o conteúdo se expanda dentro do contêiner */
+  }
+  
+  .question {
+    margin: 15px 0;
+  }
+  
+  .question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .question-header:hover {
+    color: #d12525;
+  }
+  
+  .answer {
+    margin-top: 10px;
+    display: none;
+    padding-left: 20px;
+    border-left: 2px solid #ff0000;
+    color: #333;
+  }
+  
+  .icon {
+    font-size: 20px;
+    user-select: none;
+  }
+  
+  #title-questions {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    bottom: 0%;
+    left: 41%;
+  }
+  
+  #image-logo {
+    position: relative;
+    width: 100px;
+    margin-left: 60px;
+    bottom: 0%;
+    left: 43.5%;
+  }
+  
+  #links {
+    text-decoration: none;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #f4f4f9;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      width: 50%;
-      margin-bottom: 80px;
-      max-width: 600px;
-      margin-right: 300px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      height: auto;
       padding: 20px;
     }
-    .question {
-      margin: 15px 0;
+  
+    .container {
+      width: 90%;
+      margin-bottom: 20px;
+      padding: 15px;
     }
-    .question-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-    .question-header:hover {
-      color: #d12525;
-    }
-    .answer {
-      margin-top: 10px;
-      display: none;
-      padding-left: 20px;
-      border-left: 2px solid #ff0000;
-      color: #333;
-    }
-    .icon {
-      font-size: 20px;
-      user-select: none;
-    }
-
+  
     #title-questions {
-        position: relative;
-        display: flex;
-        bottom: 37%;
-        left: 25%;
-        padding-bottom: 5px;
+      margin-top: 20px;
     }
-
+  
     #image-logo {
-        position: absolute;
-        width: 100px;
-        margin-left: 30px;
-        bottom: 90%;
+      width: 80px;
     }
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      padding: 10px;
+    }
+  
+    .container {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    #title-questions {
+      margin-top: 20px;
+    }
+  
+    #image-logo {
+      width: 70px;
+    }
+  }
+  
+  
+}
 
-    #links {
-        text-decoration: none;
-    }
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    padding: 20px;
+  }
+
+  .container {
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  #title-questions {
+    margin-top: 20px;
+  }
+
+  #image-logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #title-questions {
+    margin-top: 20px;
+  }
+
+  #image-logo {
+    width: 70px;
+  }
+}
 
   </style>
 </head>

@@ -219,10 +219,10 @@ html, body{
 }
 
 .table__select-row {
-    appearence: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    -webkit-appearance: none;
+    appearance: none; /* Standard syntax */
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    -o-appearance: none; /* Opera */
     width: 17px;
     height: 17px;
     margin: 0 0 0 5px !important;

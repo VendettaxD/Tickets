@@ -1,16 +1,13 @@
-// function to show the opens tickets
-
 function tickets2() {  
     return [
-        {user: 'aaaaaaaaaaaa', department: 'Financeiro', title: 'Mal funcionamento dos periféricos', status: 'Analista', nameAnalista: 'Arnold'},
-        {user: 'Maria Silva', department: 'TI', title: 'Problema de rede', status: 'Analista', nameAnalista: 'Carlos'},
+        {user: 'Jose Arnold', department: 'Financeiro', title: 'Mal funcionamento dos periféricos', status: 'atendendo', nameAnalista: 'Arnold'},
+        {user: 'Maria Silva', department: 'TI', title: 'Problema de rede', status: 'encerrado', nameAnalista: 'Carlos'},
     ];
 }
 
 function createTicketContent() {
     const dynamicContent = document.getElementById('ticketList');
     
-    // Verificação adicional para assegurar que o elemento foi encontrado
     if (!dynamicContent) {
         console.error('Elemento ticketList não encontrado na página.');
         return;
@@ -22,20 +19,30 @@ function createTicketContent() {
         const container = document.createElement('div');
         container.className = 'container-options';
 
+        // Definindo a cor do status dinamicamente
+        let statusClass = '';
+        if (ticket.status === 'encerrado') {
+            statusClass = 'status-vermelho';
+        } else if (ticket.status === 'atendendo') {
+            statusClass = 'status-verde';
+        } else if (ticket.status === 'pendente') {
+            statusClass = 'status-branco';
+        }
+
         container.innerHTML = `
             <div class="container-options-box">
                 <div class="circle-foto"></div>
-                <div class="info-conlunm">
+                <div class="info-column">
                     <i>${ticket.user} | ${ticket.department}</i>
                     <h4>${ticket.title}</h4>
                 </div>
                 <div class="circle-options">
                     <h3>Status</h3>
-                    <div class="circle-status"></div>
+                    <div class="circle-status ${statusClass}"></div>
                 </div>
                 <div class="name-column">
-                    <h3>${ticket.status}</h3>
-                    <h3>${ticket.nameAnalista}</h3>
+                    <h3>Analista</h3>
+                    <h2>${ticket.nameAnalista}</h2>
                 </div>
             </div>
         `;
@@ -43,6 +50,7 @@ function createTicketContent() {
         dynamicContent.appendChild(container);
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', createTicketContent);
 
@@ -69,7 +77,7 @@ function generateTicketProtocol() {
 
     return `${protocolNumber}${day}${month}${year}`; // Ex: 12312024 (1 + 31/12/2024)
 }
-
+  3000
 
 
 // Criar um novo ticket
@@ -119,6 +127,8 @@ function openTicket(id) {
     renderMessages(ticket.messages);
 }
 
+
+
 // Renderizar as mensagens no chat
 function renderMessages(messages) {
     messagesContainer.innerHTML = ''; // Limpa a área de mensagens
@@ -157,6 +167,7 @@ function sendMessage() {
         text: userMessage 
     });
 
+    
     renderMessages(ticket.messages); // Atualiza as mensagens
     input.value = ''; // Limpa o campo de input
 
@@ -165,7 +176,7 @@ function sendMessage() {
         const adminMessage = { 
             sender: 'admin', 
             name: 'Administrador',  // Nome do administrador
-            text: "Resposta automática do administrador." 
+            text: "Não tem banana." 
         };
         ticket.messages.push(adminMessage); // Adiciona a mensagem do administrador
         renderMessages(ticket.messages); // Atualiza as mensagens
@@ -204,14 +215,78 @@ function handleFileSelection() {
     const fileInput = document.getElementById("fileInput");
     const selectedFile = fileInput.files[0]; // Obtém o primeiro arquivo selecionado
 
-    if (selectedFile) {
-      // Aqui você pode manipular o arquivo selecionado, exibir o nome ou enviar o arquivo
-      alert("Arquivo selecionado: " + selectedFile.name);
-    }
   }
 
-  function sendMessage() {
-    const userInput = document.getElementById("userInput").value;
-    // Aqui você pode enviar a mensagem
-    alert("Mensagem enviada: " + userInput);
+            // ################## AQUI QUE ESTA O RENDER DE IMAGENS DO CHAT ##################
+
+  // Atualizar renderMessages para suportar mensagens de imagem
+function renderMessages(messages) {
+    messagesContainer.innerHTML = ''; // Limpa a área de mensagens
+    messages.forEach(message => {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${message.sender}`; // Adiciona a classe de quem enviou a mensagem
+
+        // Cria a estrutura de exibição da mensagem com o nome do remetente
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'sender-name';
+        nameDiv.textContent = message.name; // Exibe o nome do remetente
+        msgDiv.appendChild(nameDiv);
+
+        if (message.text) {
+            // Renderiza mensagens de texto
+            const textDiv = document.createElement('div');
+            textDiv.className = 'message-text';
+            textDiv.textContent = message.text; // Exibe o conteúdo da mensagem
+            msgDiv.appendChild(textDiv);
+        } else if (message.image) {
+            // Renderiza mensagens de imagem
+            const imgElement = document.createElement('img');
+            imgElement.className = 'message-image';
+            imgElement.src = message.image; // Define a URL/Base64 da imagem
+            imgElement.alt = 'Imagem enviada';
+            imgElement.style.maxWidth = '200px';
+            msgDiv.appendChild(imgElement);
+        }
+
+        messagesContainer.appendChild(msgDiv); // Adiciona a mensagem na área de mensagens
+    });
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Garante que a área de mensagens desça até o final
+}
+
+// Função para lidar com a seleção de arquivos
+function handleFileSelection() {
+    const fileInput = document.getElementById("fileInput");
+    const selectedFile = fileInput.files[0]; // Obtém o primeiro arquivo selecionado
+
+    if (selectedFile && activeTicketId !== null) {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const ticket = tickets.find(ticket => ticket.id === activeTicketId);
+
+            // Adiciona a imagem como mensagem no ticket
+            ticket.messages.push({
+                sender: 'user',
+                name: 'João da Silva',
+                image: reader.result // Base64 da imagem
+            });
+
+            renderMessages(ticket.messages); // Atualiza as mensagens no chat
+        };
+
+        reader.readAsDataURL(selectedFile); // Lê a imagem como Base64
+    }
+}
+
+// Associar o evento de envio de imagem
+document.getElementById("fileInput").addEventListener("change", handleFileSelection);
+
+
+// Elemento de foto e nome do colaborador
+
+function toggleMenu() {
+    const menu = document.getElementById('userMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   }
+  
+  
