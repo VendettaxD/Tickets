@@ -318,16 +318,46 @@ button:hover {
 }
 
 /* Botões dentro da navbar */
+
+
 .navbar button {
-    background-color: rgba(48, 45, 45, 0.5);
-    border: 1px solid #ff4d4d;
-    color: rgb(255, 255, 255);
-    border-radius: 5px;
-    padding: 8px 12px;
-    margin: 0 5px;
-    cursor: pointer;
+    width: 7.5em;
+    height: 3.3em;
+    margin: 0.5em;
+    background: rgba(0, 0, 0, 0.438);
+    color: white;
+    border: none;
+    border-radius: 0.625em;
     font-size: 14px;
-}
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+   
+   .navbar button:hover {
+    color: rgb(255, 255, 255);
+   }
+   
+   .navbar button:after {
+    content: "";
+    background: #ff4d4d;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   .navbar button:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }
 
 .new-ticket-btn {
     background-color: #ffffff;
@@ -337,19 +367,12 @@ button:hover {
     padding: 8px 16px;
 }
 
-.navbar button:hover {
-    background-color: #9c0404;
-    color: white;
-}
+
 
 .new-ticket-btn:hover {
     background-color: #ffcccc;
     color: #ff3d3d;
     border-color: #ff3d3d;
-}
-
-.navbar button:hover {
-    background-color: #ff5757;
 }
 
 
